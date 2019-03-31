@@ -42,7 +42,7 @@ class TimeTable extends Component<OwnProps, OwnStates>{
   renderShowPastClassesToggle() {
     return <div style={{ textAlign: 'center' }}>
       <label style={{ fontWeight: 'bold' }}>Show past classes? </label>
-      <a href="#" onClick={() => this.toggleShowPastClasses()}>{this.state.showPastClasses ? "Show All" : "Don't Show"}</a>
+      <a href="#" onClick={() => this.toggleShowPastClasses()}>{this.state.showPastClasses ? "Don't Show" : "Show All"}</a>
     </div>
   }
   render() {
