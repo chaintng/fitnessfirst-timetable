@@ -6,6 +6,7 @@ import Loading from './Loading';
 import { getFavouriteClubs, toggleFavouriteClub } from "./LocalStorageService";
 import TimeTable from './TimeTable';
 import ClubSelector from './ClubSelector';
+import Footer from './Footer';
 import styles from './App.module.css';
 import emptyStar from './empty-star.png';
 import starred from './star.png';
@@ -66,6 +67,7 @@ class App extends Component<OwnProps, OwnStates> {
           this.state.loading || !this.state.ffData ?
             <Loading /> : <TimeTable ffData={this.state.ffData} club={this.state.club} />
         }
+        <Footer />
       </div>
     );
   }

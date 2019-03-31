@@ -2,7 +2,7 @@ import axios from 'axios';
 import { FFDataModel } from "./FFDataModel";
 
 async function requestTimetable(club: string): Promise<any> {
-  return axios.get(`http://localhost:8080/proxy/www.fitnessfirst.co.th:443/fitness-first/web-services/v2/timetable/%7B03D82E6E-083F-4F37-B877-9CAFC75D919C%7D/${club}`)
+  return axios.get(`/proxy/www.fitnessfirst.co.th:443/fitness-first/web-services/v2/timetable/%7B03D82E6E-083F-4F37-B877-9CAFC75D919C%7D/${club}`)
     .then((output) => {
       return mapToFfDataModel(output.data);
     })
