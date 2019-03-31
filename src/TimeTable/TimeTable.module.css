@@ -1,5 +1,7 @@
 ul.ul {
     padding: 0px;
+    max-width: 400px;
+    margin: auto;
 }
 
 li.li {
@@ -20,8 +22,11 @@ li.li label {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-basis: 120px;
+    flex-shrink: 0;
+    margin: 0px 10px;
 }
 
 .classDescription {
-    flex-basis: 200px;
+    flex-grow: 1;
 }

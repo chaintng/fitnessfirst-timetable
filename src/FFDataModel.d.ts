@@ -1,5 +1,8 @@
 export interface FFDataModel {
-  classes: Class[]
+  classes: {
+    today: Class[],
+    tomorrow: Class[],
+  }
 }
 
 export interface Class {
