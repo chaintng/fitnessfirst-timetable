@@ -1,0 +1,27 @@
+ul.ul {
+    padding: 0px;
+}
+
+li.li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+li.li label {
+    font-weight: bold;
+}
+
+.classImage {
+    width: 120px;
+    overflow: hidden;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.classDescription {
+    flex-basis: 200px;
+}

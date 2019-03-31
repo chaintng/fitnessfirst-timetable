@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "FF Timetable",
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node-server",
+      "config": { "maxLambdaSize": "50mb" }
+    },
+    { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "build" } }
+  ],
+  "routes": [
+    { "src": "/proxy/(.*)", "headers": {"cache-control": "s-maxage=0"}, "dest": "/index.js" }
+  ]
+}

@@ -1,25 +1,54 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { requestTimetable } from './FFApiFactory';
+import { FFDataModel } from "./FFDataModel";
+import clubList from "./FitnessFirstClub";
+import Loading from './Loading';
+import TimeTable from './TimeTable';
+import ClubSelector from './ClubSelector';
+import styles from './App.module.css';
 
-class App extends Component {
+interface OwnProps {
+
+}
+
+interface OwnStates {
+  loading: boolean;
+  ffData: FFDataModel | null;
+  club: string;
+}
+
+const DEFAULT_CLUB = 'AIA';
+
+class App extends Component<OwnProps, OwnStates> {
+  constructor(props: OwnProps) {
+    super(props);
+    const qs = new URLSearchParams(window.location.search);
+    const club = qs.get('club') || DEFAULT_CLUB;
+    this.state = {
+      loading: true,
+      ffData: null,
+      club,
+    };
+    requestTimetable(this.state.club)
+      .then((output) => {
+        this.setState({
+          loading: false,
+          ffData: output,
+        });
+      });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h2 className={styles.header}>{clubList[this.state.club]} Time Table</h2>
+        <div style={{ marginBottom: '10px' }}>
+          <ClubSelector />
+        </div>
+        {
+          this.state.loading || !this.state.ffData ?
+            <Loading /> : <TimeTable ffData={this.state.ffData} club={this.state.club} />
+        }
       </div>
     );
   }
