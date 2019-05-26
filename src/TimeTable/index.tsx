@@ -71,7 +71,7 @@ class TimeTable extends Component<OwnProps, OwnStates>{
 
     if (!this.state.showPastClasses) {
       filteredClasses = filteredClasses.filter((item) => {
-        return item.EndTime > now;
+        return now < new Date(item.StartTime.getTime() + (1000 * 60 * 15));
       })
     }
 

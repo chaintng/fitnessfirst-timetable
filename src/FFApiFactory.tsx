@@ -25,7 +25,8 @@ function mapToFfDataModel(output: any): FFDataModel {
     .map((item: any) => {
       const dateRegex = item.Date.match(/(\d{0,4})(\d{0,2})(\d{0,2})/);
       const timeRegex = item.TimeText.match(/(.+)\s-\s(.+)/);
-      item.EndTime = new Date(`${dateRegex[1]}-${dateRegex[2]}-${dateRegex[3]} ${timeRegex[2]}`);
+      item.StartTime = new Date(`${dateRegex[1]}/${dateRegex[2]}/${dateRegex[3]} ${timeRegex[1]}`);
+      item.EndTime = new Date(`${dateRegex[1]}/${dateRegex[2]}/${dateRegex[3]} ${timeRegex[2]}`);
       return item;
     });
 

@@ -7,6 +7,7 @@ export interface FFDataModel {
 
 export interface Class {
   TimeText: string;
+  StartTime: Date;
   EndTime: Date;
   Title: string;
   Studio: string;
